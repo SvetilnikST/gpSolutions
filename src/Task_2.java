@@ -34,18 +34,14 @@ public class Task_2 {
         return 0;
     }
 
-    private static void writeAnswer(int answer) throws IOException {
-        FileWriter fileWriter = new FileWriter("OUTPUT.txt");
-        fileWriter.write(String.valueOf(answer));
-        fileWriter.flush();
-        fileWriter.close();
-    }
-
     public static void main(String[] args) throws IOException {
 
         int k = readFile();
         if (k > 0 && k <= 10000) {
-            writeAnswer(getSum(k));
+            String text = Integer.toString(getSum(k));
+            PrintWriter out = new PrintWriter("OUTPUT.txt");
+            out.print(text);
+            out.close();
         }
 
     }
