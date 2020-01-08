@@ -1,3 +1,5 @@
+package step_1;
+
 import java.io.*;
 
 public class Task_550 {
