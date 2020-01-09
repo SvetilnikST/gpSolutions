@@ -8,32 +8,17 @@ public class Task_317 {
         int y = Integer.parseInt(s[1]);
         int z = Integer.parseInt(s[2]);
         int w = Integer.parseInt(s[3]);
-        int c = 0;
+        int p, c = 0;
         if (w >= 1 && w <= 1000) {
             if (x >= 1 && y >= 1 && z >= 1 && x <= 100 && y <= 100 && z <= 100) {
-
-//                for (int i = 0; i <= w / x; i++) {
-//                    for (int j = 0; j <= (w - (x * i)) / y; j++) {
-//                        for (int n = 0; n <= (w - (x * i) - (w * j)) / z; n++) {
-//                            if ((x * i) + (w * j) + (z * n) == w) {
-//                                c++;
-//                            }
-//                        }
-//                    }
-//                }
-
-//                int v;
-//                for (int i = 0; i < w / x; i++) {
-//
-//                    for (int j = 0; j < w / y; j++) {
-//                        v = w - (i * x) - (j * y);
-//
-//                        if ((v >= 0) && (v % z == 0)) {
-//                            c++;
-//                        }
-//                    }
-//                }
-
+                for (int i = 0; i <= w / x; i++) {
+                    for (int j = 0; j <= w / y; j++) {
+                        p = w - (i * x) - (j * y);
+                        if ((p >= 0) && (p % z == 0)) {
+                            c++;
+                        }
+                    }
+                }
             }
         }
         String string = Integer.toString(c);
