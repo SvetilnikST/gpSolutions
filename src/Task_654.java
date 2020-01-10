@@ -8,7 +8,7 @@ public class Task_654 {
         int[] arr = new int[s.length];
         int last, sum = 0, max = arr[0];
         int len = s.length - 1;
-        if (n >= 1 && n <= 200000 && len >= 1 && len < n) {
+        if (n >=1 && n <= 200000 && len >= 1 && len < n) {
             for (int i = 0; i < s.length; i++) {
                 int k = Integer.parseInt(s[i]);
                 if (k >= 1 && k <= Math.pow(10, 9)) {
