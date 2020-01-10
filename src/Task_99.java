@@ -30,6 +30,7 @@ public class Task_99 {
             current = new int[3];
 
             String str = "";
+            int countNum = 0;
             for (int i = 0; i < h; i++) {
                 for (int j = 0; j < m; j++) {
                     if (j != 0 && j != m - 1 && i != 0 && i != h - 1) {
@@ -46,17 +47,19 @@ public class Task_99 {
                             if (str.charAt(k - 1) == 111) {
                                 arr[i][j][k] = -1;
                             }
-                            if (str.charAt(k - 1) == 49) {
+                            if (str.charAt(k - 1) == 49 && i == 1) {
                                 arr[i][j][k] = 0;
                                 start[0] = i;
                                 start[1] = j;
                                 start[2] = k;
+                                countNum++;
                             }
-                            if (str.charAt(k - 1) == 50) {
+                            if (str.charAt(k - 1) == 50 && i == h - 2) {
                                 arr[i][j][k] = 0;
                                 finish[0] = i;
                                 finish[1] = j;
                                 finish[2] = k;
+                                countNum++;
                             }
                         }
                     }
@@ -65,22 +68,23 @@ public class Task_99 {
                     reader.readLine();
                 }
             }
-            arrayList = new ArrayList<>();
-            arrayList.add(start);
-            int rez = 1;
-            while (!arrayList.isEmpty() && rez == 1) {
-                current = arrayList.get(arrayList.size() - 1);
-                arrayList.remove(arrayList.size() - 1);
-                rez = make_step(current);
+            if (countNum == 2) {
+                arrayList = new ArrayList<>();
+                arrayList.add(start);
+                int rez = 1;
+                while (!arrayList.isEmpty() && rez == 1) {
+                    current = arrayList.get(arrayList.size() - 1);
+                    arrayList.remove(arrayList.size() - 1);
+                    rez = make_step(current);
+                }
+                count = arr[finish[0]][finish[1]][finish[2]] * 5;
             }
-            count = arr[finish[0]][finish[1]][finish[2]] * 5;
         }
         String string = Integer.toString(count);
         PrintWriter out = new PrintWriter("OUTPUT.txt");
         out.print(string);
         out.close();
     }
-
 
     private int make_step(int[] current) {
         int rez = 0;
@@ -89,6 +93,7 @@ public class Task_99 {
             rez = 2;
             return rez;
         }
+
         if (arr[current[0] - 1][current[1]][current[2]] == -1) {
         } else {
             cur = new int[3];
@@ -101,8 +106,7 @@ public class Task_99 {
                 rez = 1;
             }
         }
-        if (arr[current[0] + 1][current[1]][current[2]] == -1) {
-        } else {
+        if (arr[current[0] + 1][current[1]][current[2]] != -1) {
             cur = new int[3];
             cur[0] = current[0] + 1;
             cur[1] = current[1];
@@ -113,8 +117,7 @@ public class Task_99 {
                 rez = 1;
             }
         }
-        if (arr[current[0]][current[1] - 1][current[2]] == -1) {
-        } else {
+        if (arr[current[0]][current[1] - 1][current[2]] != -1) {
             cur = new int[3];
             cur[0] = current[0];
             cur[1] = current[1] - 1;
@@ -125,8 +128,8 @@ public class Task_99 {
                 rez = 1;
             }
         }
-        if (arr[current[0]][current[1] + 1][current[2]] == -1) {
-        } else {
+
+        if (arr[current[0]][current[1] + 1][current[2]] != -1) {
             cur = new int[3];
             cur[0] = current[0];
             cur[1] = current[1] + 1;
@@ -137,8 +140,7 @@ public class Task_99 {
                 rez = 1;
             }
         }
-        if (arr[current[0]][current[1]][current[2] - 1] == -1) {
-        } else {
+        if (arr[current[0]][current[1]][current[2] - 1] != -1) {
             cur = new int[3];
             cur[0] = current[0];
             cur[1] = current[1];
@@ -149,8 +151,7 @@ public class Task_99 {
                 rez = 1;
             }
         }
-        if (arr[current[0]][current[1]][current[2] + 1] == -1) {
-        } else {
+        if (arr[current[0]][current[1]][current[2] + 1] != -1) {
             cur = new int[3];
             cur[0] = current[0];
             cur[1] = current[1];
