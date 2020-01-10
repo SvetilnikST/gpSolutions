@@ -81,9 +81,6 @@ public class Task_99 {
         arrayList.add(start);
         while (!arrayList.isEmpty()) {
             current = arrayList.get(arrayList.size());
-//            current[0] = start[0];
-//            current[1] = start[1];
-//            current[2] = start[2];
             make_step(current);
 
         }
