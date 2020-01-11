@@ -1,12 +1,15 @@
-3 3 3
-1..
-oo.
-...
+3 4 5
+1...o
+oo.oo
+...oo
+...oo
 
-ooo
-..o
-.oo
+ooooo
+..ooo
+.oooo
+...oo
 
-ooo
-o..
-o.2
+ooooo
+o..oo
+o..oo
+...2o
