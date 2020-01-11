@@ -20,7 +20,6 @@ public class Task_654 {
                 if (count == s.length) {
                     long last = arr[0];
                     long max = last;
-
                     for (int i = 1; i < arr.length; i++) {
                         long cur = arr[i];
                         if (cur > max) {
