@@ -4,17 +4,22 @@ import java.util.ArrayList;
 public class Task_99 {
     int h, m, n, count = 0;
     int arr[][][];
+    ArrayList<int[]> arrayList;
     int[] start;
     int[] finish;
-    int[] current;
-    ArrayList<int[]> arrayList;
+    int[] cur;
+
     public static void main(String[] args) throws IOException {
         Task_99 app = new Task_99();
         app.run();
     }
+
     private void run() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("INPUT.txt"));
         String[] s = reader.readLine().split("\\s");
+        int[] dh = {0, 0, 0, 0, 1};
+        int[] dm = {0, 1, -1, 0, 0};
+        int[] dn = {1, 0, 0, -1, 0};
         h = Integer.parseInt(s[0]) + 2;
         m = Integer.parseInt(s[1]) + 2;
         n = Integer.parseInt(s[2]) + 2;
@@ -22,11 +27,8 @@ public class Task_99 {
             arr = new int[h][m][n];
             start = new int[3];
             finish = new int[3];
-            current = new int[3];
-
+            cur = new int[3];
             String str = "";
-            int countOne = 0;
-            int countTwo = 0;
             for (int i = 0; i < h; i++) {
                 for (int j = 0; j < m; j++) {
                     if (j != 0 && j != m - 1 && i != 0 && i != h - 1) {
@@ -47,14 +49,12 @@ public class Task_99 {
                                 start[0] = i;
                                 start[1] = j;
                                 start[2] = k;
-                                countOne++;
                             }
                             if (str.charAt(k - 1) == 50 && i == h - 2) {
                                 arr[i][j][k] = 0;
                                 finish[0] = i;
                                 finish[1] = j;
                                 finish[2] = k;
-                                countTwo++;
                             }
                         }
                     }
@@ -63,14 +63,24 @@ public class Task_99 {
                     reader.readLine();
                 }
             }
-            if (countOne == 1 && countTwo == 1) {
-                arrayList = new ArrayList<>();
-                arrayList.add(start);
-                int rez = 1;
-                while (!arrayList.isEmpty() || rez == 1) {
-                    current = arrayList.get(arrayList.size() - 1);
-                    arrayList.remove(arrayList.size() - 1);
-                    rez = make_step(current);
+            arrayList = new ArrayList<>();
+            arrayList.add(start);
+
+            while (!arrayList.isEmpty()) {
+                cur = arrayList.get(arrayList.size() - 1);
+                arrayList.remove(arrayList.size() - 1);
+
+                for (int i = 0; i < 5; i++) {
+                    int[] tmp = new int[3];
+                    tmp[0] = cur[0] + dh[i];
+                    tmp[1] = cur[1] + dm[i];
+                    tmp[2] = cur[2] + dn[i];
+                    if (tmp != start) {
+                        if (arr[tmp[0]][tmp[1]][tmp[2]] == 0 || arr[tmp[0]][tmp[1]][tmp[2]] > arr[cur[0]][cur[1]][cur[2]] + 1) {
+                            arrayList.add(tmp);
+                            arr[tmp[0]][tmp[1]][tmp[2]] = arr[cur[0]][cur[1]][cur[2]] + 1;
+                        }
+                    }
                 }
             }
             count = arr[finish[0]][finish[1]][finish[2]] * 5;
@@ -81,64 +91,5 @@ public class Task_99 {
                 out.close();
             }
         }
-    }
-    private int make_step(int[] current) {
-        int rez = 0;
-        int[] cur;
-        if (current[0] == finish[0] && current[1] == finish[1] && current[2] == finish[2]) {
-            rez = 2;
-            return rez;
-        }
-        if (arr[current[0] - 1][current[1]][current[2]] != -1) {
-            cur = new int[3];
-            cur[0] = current[0] - 1;
-            cur[1] = current[1];
-            cur[2] = current[2];
-            rez = getRez(current, rez, cur);
-        }
-        if (arr[current[0] + 1][current[1]][current[2]] != -1) {
-            cur = new int[3];
-            cur[0] = current[0] + 1;
-            cur[1] = current[1];
-            cur[2] = current[2];
-            rez = getRez(current, rez, cur);
-        }
-        if (arr[current[0]][current[1] - 1][current[2]] != -1) {
-            cur = new int[3];
-            cur[0] = current[0];
-            cur[1] = current[1] - 1;
-            cur[2] = current[2];
-            rez = getRez(current, rez, cur);
-        }
-        if (arr[current[0]][current[1] + 1][current[2]] != -1) {
-            cur = new int[3];
-            cur[0] = current[0];
-            cur[1] = current[1] + 1;
-            cur[2] = current[2];
-            rez = getRez(current, rez, cur);
-        }
-        if (arr[current[0]][current[1]][current[2] - 1] != -1) {
-            cur = new int[3];
-            cur[0] = current[0];
-            cur[1] = current[1];
-            cur[2] = current[2] - 1;
-            rez = getRez(current, rez, cur);
-        }
-        if (arr[current[0]][current[1]][current[2] + 1] != -1) {
-            cur = new int[3];
-            cur[0] = current[0];
-            cur[1] = current[1];
-            cur[2] = current[2] + 1;
-            rez = getRez(current, rez, cur);
-        }
-        return rez;
-    }
-    private int getRez(int[] current, int rez, int[] cur) {
-        if (arr[cur[0]][cur[1]][cur[2]] == 0 || arr[cur[0]][cur[1]][cur[2]] > arr[current[0]][current[1]][current[2]] + 1) {
-            arr[cur[0]][cur[1]][cur[2]] = arr[current[0]][current[1]][current[2]] + 1;
-            arrayList.add(cur);
-            rez = 1;
-        }
-        return rez;
     }
 }
