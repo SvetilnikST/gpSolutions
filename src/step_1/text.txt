@@ -5,6 +5,34 @@ System.out.println(System.currentTimeMillis() - startTime);
 
 2.718290
 
+//    boolean ok(Coord c) {
+//        if (c.getH() > 0 && c.getH() < h - 1)
+//            if (c.getM() > 0 && c.getM() < m - 1)
+//                if (c.getN() > 0 && c.getN() < n - 1)
+//                    if (arr[c.getH()][c.getM()][c.getN()] == 0)
+//                        return true;
+//        return false;
+//    }
+
+//    int make(Coord c, Coord finish) {
+//        int rez = 0;
+//        if (c.getH() == finish.getH() && c.getM() == finish.getM() && c.getN() == finish.getN()) {
+//            rez = 2;
+//            return rez;
+//        }
+//        if (c.getH() > 0 && c.getH() < h - 1)
+//            if (c.getM() > 0 && c.getM() < m - 1)
+//                if (c.getN() > 0 && c.getN() < n - 1)
+//                    if (arr[c.getH()][c.getM()][c.getN()] == 0)
+//                        rez = 1;
+//        return rez;
+//    }
+
+
+
+
+
+
 
 3 4 5
 1...o
