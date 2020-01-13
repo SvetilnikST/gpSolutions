@@ -3,7 +3,7 @@ package flud;
 import java.io.*;
 import java.util.ArrayList;
 
-public class Task_99 {
+public class step_2.Task_99 {
     int h, m, n, count = 0;
     int arr[][][];
     int[] start;
@@ -11,7 +11,7 @@ public class Task_99 {
     int[] current;
     ArrayList<int[]> arrayList;
     public static void main(String[] args) throws IOException {
-        Task_99 app = new Task_99();
+        step_2.Task_99 app = new step_2.Task_99();
         app.run();
     }
     private void run() throws IOException {
