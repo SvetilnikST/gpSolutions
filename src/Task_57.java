@@ -12,7 +12,7 @@ public class Task_57 {
             int[] x = new int[n + 1];
             int[] y = new int[n + 1];
 
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i <= n; i++) {
                 String[] s = br.readLine().split("\\s");
                 int a = Integer.parseInt(s[0]);
                 int b = Integer.parseInt(s[1]);
@@ -20,14 +20,6 @@ public class Task_57 {
                     x[i] = a;
                     y[i] = b;
                 }
-            }
-            String[] s = br.readLine().split("\\s");
-            int a = Integer.parseInt(s[0]);
-            int b = Integer.parseInt(s[1]);
-
-            if (a >= -1000 && a <= 1000 && b >= -1000 && b <= 1000) {
-                x[n] = a;
-                y[n] = b;
             }
             if (x.length == n + 1) {
                 int minIdn = 0;
