@@ -9,7 +9,6 @@ public class Task_17 {
 
         if (n >= 2 && n <= 30000) {
             String[] s2 = br.readLine().split("\\s");
-
             ArrayList<Integer> a = new ArrayList<>();
             for (int i = 0; i < n; i++) {
                 int k = Integer.parseInt(s2[i]);
@@ -18,9 +17,8 @@ public class Task_17 {
                 }
             }
             if (a.size() == n) {
-
                 ArrayList<Integer> prefix = new ArrayList<>();
-                for (int i = 0; i < 1 + n; i++) {
+                for (int i = 0; i < n + 1; i++) {
                     prefix.add(i, 0);
                 }
                 int rez = find(n, a, prefix);
@@ -33,7 +31,7 @@ public class Task_17 {
     }
 
     public static int find(int n, ArrayList<Integer> a, ArrayList<Integer> prefix) {
-        int rez = 0;
+        int rez;
         int len = 0;
         for (int i = 1; i < n; i++) {
             while (true) {
@@ -59,4 +57,5 @@ public class Task_17 {
         }
         return rez;
     }
+
 }
