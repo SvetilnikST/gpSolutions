@@ -14,32 +14,42 @@ public class Task_57 {
 
             for (int i = 0; i < n; i++) {
                 String[] s = br.readLine().split("\\s");
-                x[i] = Integer.parseInt(s[0]);
-                y[i] = Integer.parseInt(s[1]);
-            }
-            String[] s = br.readLine().split("\\s");
-            x[n] = Integer.parseInt(s[0]);
-            y[n] = Integer.parseInt(s[1]);
-
-            int minIdn = 0;
-            double count = dist(x[minIdn], x[n], y[minIdn], y[n]);
-            for (int i = 0; i < n - 2; i++) {
-                double tmp = dist(x[i], x[n], y[i], y[n]);
-                if (tmp < count) {
-                    minIdn = i;
-                    count = tmp;
+                int a = Integer.parseInt(s[0]);
+                int b = Integer.parseInt(s[1]);
+                if (a >= -1000 && a <= 1000 && b >= -1000 && b <= 1000) {
+                    x[i] = a;
+                    y[i] = b;
                 }
             }
-            for (int i = 0; i < n - 2; i++) {
-                count += dist(x[minIdn], x[i + 1], y[minIdn], y[i + 1]);
+            String[] s = br.readLine().split("\\s");
+            int a = Integer.parseInt(s[0]);
+            int b = Integer.parseInt(s[1]);
+
+            if (a >= -1000 && a <= 1000 && b >= -1000 && b <= 1000) {
+                x[n] = a;
+                y[n] = b;
             }
-            String text;
-            if (count * c <= p) {
-                text = "YES";
-            } else text = "NO";
-            PrintWriter out = new PrintWriter("OUTPUT.txt");
-            out.print(text);
-            out.close();
+            if (x.length == n + 1) {
+                int minIdn = 0;
+                double count = dist(x[minIdn], x[n], y[minIdn], y[n]);
+                for (int i = 0; i < n - 2; i++) {
+                    double tmp = dist(x[i], x[n], y[i], y[n]);
+                    if (tmp < count) {
+                        minIdn = i;
+                        count = tmp;
+                    }
+                }
+                for (int i = 0; i < n - 2; i++) {
+                    count += dist(x[minIdn], x[i + 1], y[minIdn], y[i + 1]);
+                }
+                String text;
+                if (count * c <= p) {
+                    text = "YES";
+                } else text = "NO";
+                PrintWriter out = new PrintWriter("OUTPUT.txt");
+                out.print(text);
+                out.close();
+            }
         }
     }
 
