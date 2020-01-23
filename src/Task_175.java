@@ -6,6 +6,7 @@ public class Task_175 {
         String[] s = br.readLine().split(":");
         int h = Integer.parseInt(s[0]);
         int m = Integer.parseInt(s[1]);
+
         int tmp;
 
         if (h >= 0 && h <= 23 && m >= 0 && m <= 59) {

@@ -8,8 +8,6 @@ public class Task_7 {
         String s2 = s[1];
         String s3 = s[2];
 
-        find(s1, find(s2, s3));
-
         PrintWriter out = new PrintWriter("OUTPUT.txt");
         String text = find(s1, find(s2, s3));
         out.print(text);
